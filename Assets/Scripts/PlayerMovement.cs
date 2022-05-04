@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     Vector2 rawInput;
+    [SerializeField] Vector2 startDirection = new Vector2(1, 0);
     [SerializeField] float centiSpeed = 0.2f;
     void Start()
     {
-        
+        rawInput = startDirection;
     }
 
     void Update()
@@ -19,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        rawInput = value.Get<Vector2>();
+        //ToDo prevent changes to rawInput from the opposite vector
+        rawInput = value.Get<Vector2>() != new Vector2(0,0) ? value.Get<Vector2>() : rawInput;
         Debug.Log(rawInput);
     }
 
