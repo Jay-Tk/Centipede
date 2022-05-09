@@ -22,7 +22,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //ToDo prevent changes to rawInput from the opposite vector
         rawInput = value.Get<Vector2>() != new Vector2(0,0) ? value.Get<Vector2>() : rawInput;
-        Debug.Log(rawInput);
     }
 
     void handleMove()
