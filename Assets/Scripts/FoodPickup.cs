@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class FoodPickup : MonoBehaviour
 {
     [SerializeField] GameObject prefabCentipedeBody;
+    [SerializeField] GameObject prefabFood;
     [SerializeField] GameObject centipedeHead;
     [SerializeField] float bodySpace = .75f;
     [SerializeField] Tilemap floorMap;
@@ -18,9 +19,17 @@ public class FoodPickup : MonoBehaviour
         {
             GrowCentipede();
             Destroy(collision.gameObject);
-            //floorMap.GetTilesBlock(floorMap.cellBounds);
-            //ToDo Spawn new food
+            SpawnFood();
         }
+    }
+
+    private void SpawnFood()
+    {
+        float newFoodXPos, newFoodYPos;
+        newFoodXPos = Random.Range(floorMap.origin.x, floorMap.origin.x + floorMap.size.x);
+        newFoodYPos = Random.Range(floorMap.origin.y, floorMap.origin.y + floorMap.size.y);
+        Vector3 newFoodPos = new Vector3(newFoodXPos, newFoodYPos);
+        Instantiate(prefabFood, newFoodPos, Quaternion.identity);
     }
 
     void GrowCentipede()
