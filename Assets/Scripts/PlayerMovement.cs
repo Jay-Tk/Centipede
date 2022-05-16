@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 startDirection = new Vector2(1, 0);
     [SerializeField] float centiSpeed = 0.2f;
     List<Vector2> playerTurnWayPointList = new List<Vector2>();
+
     void Start()
     {
         rawInput = startDirection;
@@ -24,6 +25,11 @@ public class PlayerMovement : MonoBehaviour
         //ToDo prevent changes to rawInput from the opposite vector
         rawInput = value.Get<Vector2>() != new Vector2(0,0) ? value.Get<Vector2>() : rawInput;
         playerTurnWayPointList.Add(transform.position);
+    }
+
+    public List<Vector2> GetWaypointList()
+    {
+        return playerTurnWayPointList;
     }
 
     void handleMove()
