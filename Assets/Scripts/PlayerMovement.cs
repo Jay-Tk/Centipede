@@ -23,8 +23,11 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         //ToDo prevent changes to rawInput from the opposite vector
-        rawInput = value.Get<Vector2>() != new Vector2(0,0) ? value.Get<Vector2>() : rawInput;
-        playerTurnWayPointList.Add(transform.position);
+        if (value.Get<Vector2>() != new Vector2(0, 0))
+        {
+            playerTurnWayPointList.Add(transform.position);
+            rawInput = value.Get<Vector2>();
+        }
     }
 
     public List<Vector2> GetWaypointList()
