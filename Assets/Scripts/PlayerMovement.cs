@@ -27,6 +27,28 @@ public class PlayerMovement : MonoBehaviour
         {
             playerTurnWayPointList.Add(transform.position);
             rawInput = value.Get<Vector2>();
+            RotateHead(rawInput);
+
+        }
+    }
+
+    private void RotateHead(Vector2 rawInput)
+    {
+        if (rawInput == new Vector2(0, 1))
+        {
+            transform.eulerAngles = new Vector3(0, 0, 90);
+        }
+        else if (rawInput == new Vector2(-1, 0))
+        {
+            transform.eulerAngles = new Vector3(0, 0, 180);
+        }
+        else if (rawInput == new Vector2(0, -1))
+        {
+            transform.eulerAngles = new Vector3(0, 0, 270);
+        }
+        else if (rawInput == new Vector2(1, 0))
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
     }
 
