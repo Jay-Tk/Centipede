@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameSession : MonoBehaviour
 {
     [SerializeField] int score;
-    // Start is called before the first frame update
-
     void Awake()
     {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -34,16 +32,5 @@ public class GameSession : MonoBehaviour
     {
         SceneManager.LoadScene(0);
         Destroy(gameObject);
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
