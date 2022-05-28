@@ -23,12 +23,12 @@ public class PlayerMovement : MonoBehaviour
     void OnMove(InputValue value)
     {
         //ToDo prevent changes to rawInput from the opposite vector
+        //check to see if input.x and input.y are both not equal to last moves
         if (value.Get<Vector2>() != new Vector2(0, 0))
         {
             playerTurnWayPointList.Add(transform.position);
             rawInput = value.Get<Vector2>();
             RotateHead(rawInput);
-
         }
     }
 
@@ -60,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
     void handleMove()
     {
         Vector2 delta = rawInput * centiSpeed * Time.deltaTime;
-
         Vector2 newPos = new Vector2();
         newPos.x = transform.position.x + delta.x;
         newPos.y = transform.position.y + delta.y;
