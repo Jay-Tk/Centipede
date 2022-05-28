@@ -8,6 +8,7 @@ public class FoodPickup : MonoBehaviour
     [SerializeField] GameObject prefabCentipedeBody;
     [SerializeField] GameObject prefabFood;
     [SerializeField] GameObject centipedeHead;
+    [SerializeField] int pointsPerFood = 10;
     [SerializeField] float bodySpace = .75f;
     [SerializeField] Tilemap floorMap;
 
@@ -18,6 +19,7 @@ public class FoodPickup : MonoBehaviour
         if (collision.tag == "Food")
         {
             GrowCentipede();
+            FindObjectOfType<GameSession>().AddToScore(pointsPerFood);
             Destroy(collision.gameObject);
             SpawnFood();
         }

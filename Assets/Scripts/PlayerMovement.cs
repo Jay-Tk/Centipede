@@ -65,4 +65,12 @@ public class PlayerMovement : MonoBehaviour
         newPos.y = transform.position.y + delta.y;
         transform.position = newPos;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Wall")
+        {
+            FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        }
+    }
 }

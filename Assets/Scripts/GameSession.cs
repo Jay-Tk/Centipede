@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameSession : MonoBehaviour
 {
@@ -22,6 +23,17 @@ public class GameSession : MonoBehaviour
     {
         score += pointsToAdd;
         //scoreText.text = score.ToString();
+    }
+
+    public void ProcessPlayerDeath()
+    {
+        ResetGameSession();
+    }
+
+    void ResetGameSession()
+    {
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
     void Start()
