@@ -11,8 +11,14 @@ public class FoodPickup : MonoBehaviour
     [SerializeField] int pointsPerFood = 10;
     [SerializeField] float bodySpace = .75f;
     [SerializeField] Tilemap floorMap;
+    AudioPlayer player;
 
     int bodyCount = 1;
+
+    private void Awake()
+    {
+        player = FindObjectOfType<AudioPlayer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +27,7 @@ public class FoodPickup : MonoBehaviour
             GrowCentipede();
             FindObjectOfType<GameSession>().AddToScore(pointsPerFood);
             Destroy(collision.gameObject);
+            player.PlayEatingClip();
             SpawnFood();
         }
     }

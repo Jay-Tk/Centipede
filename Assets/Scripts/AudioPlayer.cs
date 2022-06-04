@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-    //[SerializeField] AudioClip shootingClip;
-    //[SerializeField] [Range(0f, 1f)] float shootingVolume = 1f;
+    [SerializeField] AudioClip eatingClip;
+    [SerializeField] [Range(0f, 1f)] float eatingVolume = 1f;
     //[SerializeField] AudioClip damageClip;
     //[SerializeField][Range(0f, 1f)] float damageVolume = 1f;
 
@@ -31,10 +31,10 @@ public class AudioPlayer : MonoBehaviour
         }
     }
 
-    //public void PlayShootingClip()
-    //{
-    //    PlayClip(shootingClip, shootingVolume);
-    //}
+    public void PlayEatingClip()
+    {
+        PlayClip(eatingClip, eatingVolume);
+    }
 
     void PlayClip(AudioClip clip, float volume)
     {
