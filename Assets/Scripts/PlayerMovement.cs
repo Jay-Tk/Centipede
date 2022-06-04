@@ -27,9 +27,18 @@ public class PlayerMovement : MonoBehaviour
         if (value.Get<Vector2>() != new Vector2(0, 0))
         {
             playerTurnWayPointList.Add(transform.position);
-            rawInput = value.Get<Vector2>();
+            Vector2 initialInput = value.Get<Vector2>();
+            if (initialInput.x != 0)
+            {
+                rawInput = new Vector2(initialInput.x, 0);
+            } else if (initialInput.y != 0)
+            {
+                rawInput = new Vector2(0, initialInput.y);
+            }
+
             RotateHead(rawInput);
         }
+        Debug.Log(rawInput);
     }
 
     private void RotateHead(Vector2 rawInput)
