@@ -1,44 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Vector2 rawInput;
-    [SerializeField] Vector2 startDirection = new Vector2(1, 0);
+    Vector2 direction;
     [SerializeField] float centiSpeed = 0.2f;
     List<Vector2> playerTurnWayPointList = new List<Vector2>();
+    FoodPickup foodPickup;
+    List<Transform> bodySegments;
 
     void Start()
     {
-        rawInput = startDirection;
+        direction = Vector2.right;
+        foodPickup = GetComponent<FoodPickup>();
     }
 
     void Update()
     {
-        handleMove();
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            direction = Vector2.up;
+        } else if (Input.GetKeyDown(KeyCode.S))
+        {
+            direction = Vector2.down;
+        } else if (Input.GetKeyDown(KeyCode.A))
+        {
+            direction = Vector2.left;
+        } else if (Input.GetKeyDown(KeyCode.D))
+        {
+            direction = Vector2.right;
+        }
     }
 
-    void OnMove(InputValue value)
+    private void FixedUpdate()
     {
-        //ToDo prevent changes to rawInput from the opposite vector
-        //check to see if input.x and input.y are both not equal to last moves
-        if (value.Get<Vector2>() != new Vector2(0, 0))
-        {
-            playerTurnWayPointList.Add(transform.position);
-            Vector2 initialInput = value.Get<Vector2>();
-            if (initialInput.x != 0)
-            {
-                rawInput = new Vector2(initialInput.x, 0);
-            } else if (initialInput.y != 0)
-            {
-                rawInput = new Vector2(0, initialInput.y);
-            }
+        bodySegments = foodPickup.GetBodySegmentList();
 
-            RotateHead(rawInput);
+        for (int i = bodySegments.Count - 1; i > 0; i--)
+        {
+            bodySegments[i].position = bodySegments[i - 1].position;
         }
-        Debug.Log(rawInput);
+
+        this.transform.position = new Vector3(
+            this.transform.position.x *.5f + direction.x,
+            this.transform.position.y * .5f + direction.y,
+            0.0f);
     }
 
     private void RotateHead(Vector2 rawInput)
@@ -64,15 +71,6 @@ public class PlayerMovement : MonoBehaviour
     public List<Vector2> GetWaypointList()
     {
         return playerTurnWayPointList;
-    }
-
-    void handleMove()
-    {
-        Vector2 delta = rawInput * centiSpeed * Time.deltaTime;
-        Vector2 newPos = new Vector2();
-        newPos.x = transform.position.x + delta.x;
-        newPos.y = transform.position.y + delta.y;
-        transform.position = newPos;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

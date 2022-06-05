@@ -8,6 +8,7 @@ public class FoodPickup : MonoBehaviour
     [SerializeField] GameObject prefabCentipedeBody;
     [SerializeField] GameObject prefabFood;
     [SerializeField] GameObject centipedeHead;
+    List<Transform> bodySegments;
     [SerializeField] int pointsPerFood = 10;
     [SerializeField] float bodySpace = .75f;
     [SerializeField] Tilemap floorMap;
@@ -18,6 +19,12 @@ public class FoodPickup : MonoBehaviour
     private void Awake()
     {
         player = FindObjectOfType<AudioPlayer>();
+    }
+
+    private void Start()
+    {
+        bodySegments = new List<Transform>();
+        bodySegments.Add(this.transform);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -44,8 +51,14 @@ public class FoodPickup : MonoBehaviour
     void GrowCentipede()
     {
         float bodyOffset = bodySpace * bodyCount;
-        Vector3 newBodyPos = centipedeHead.transform.position - new Vector3(bodyOffset, 0);
-        Instantiate(prefabCentipedeBody, newBodyPos, Quaternion.identity, centipedeHead.transform);
+        GameObject newBodySegment = Instantiate(prefabCentipedeBody);
+        newBodySegment.transform.position = bodySegments[bodySegments.Count - 1].position;
+        bodySegments.Add(newBodySegment.transform);
         bodyCount++;
+    }
+
+    public List<Transform> GetBodySegmentList()
+    {
+        return bodySegments;
     }
 }
