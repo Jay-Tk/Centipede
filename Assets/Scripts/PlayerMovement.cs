@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     {
         direction = Vector2.right;
         foodPickup = GetComponent<FoodPickup>();
+        bodySegments = new List<Transform>();
+        bodySegments.Add(transform);
     }
 
     void Update()
@@ -21,13 +23,16 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             direction = Vector2.up;
-        } else if (Input.GetKeyDown(KeyCode.S))
+        }
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             direction = Vector2.down;
-        } else if (Input.GetKeyDown(KeyCode.A))
+        }
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             direction = Vector2.left;
-        } else if (Input.GetKeyDown(KeyCode.D))
+        }
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             direction = Vector2.right;
         }
@@ -43,9 +48,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         this.transform.position = new Vector3(
-            this.transform.position.x *.5f + direction.x,
-            this.transform.position.y * .5f + direction.y,
-            0.0f);
+            Mathf.Round(this.transform.position.x + direction.x),
+            Mathf.Round(this.transform.position.y + direction.y),
+            0.0f
+        );
+
+        RotateHead(direction);
     }
 
     private void RotateHead(Vector2 rawInput)
