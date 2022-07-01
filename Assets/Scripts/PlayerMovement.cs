@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     Vector2 direction;
     [SerializeField] float centiSpeed = 0.2f;
-    List<Vector2> playerTurnWayPointList = new List<Vector2>();
     FoodPickup foodPickup;
     List<Transform> bodySegments;
 
@@ -74,11 +73,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-    }
-
-    public List<Vector2> GetWaypointList()
-    {
-        return playerTurnWayPointList;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
