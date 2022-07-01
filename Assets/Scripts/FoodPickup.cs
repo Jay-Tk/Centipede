@@ -10,11 +10,8 @@ public class FoodPickup : MonoBehaviour
     [SerializeField] GameObject centipedeHead;
     List<Transform> bodySegments;
     [SerializeField] int pointsPerFood = 10;
-    [SerializeField] float bodySpace = .75f;
     [SerializeField] Tilemap floorMap;
     AudioPlayer player;
-
-    int bodyCount = 1;
 
     private void Awake()
     {
@@ -50,11 +47,9 @@ public class FoodPickup : MonoBehaviour
 
     void GrowCentipede()
     {
-        float bodyOffset = bodySpace * bodyCount;
         GameObject newBodySegment = Instantiate(prefabCentipedeBody);
         newBodySegment.transform.position = bodySegments[bodySegments.Count - 1].position;
         bodySegments.Add(newBodySegment.transform);
-        bodyCount++;
     }
 
     public List<Transform> GetBodySegmentList()

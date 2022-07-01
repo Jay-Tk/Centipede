@@ -2741,14 +2741,6 @@ PrefabInstance:
       propertyPath: floorMap
       value: 
       objectReference: {fileID: 1788941187}
-    - target: {fileID: 53907894, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
-      propertyPath: prefabFood
-      value: 
-      objectReference: {fileID: 1982022813344846797, guid: 6ab01b93ea0d85147b2304fcd71e4284, type: 3}
-    - target: {fileID: 1983543149642115823, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4888828131106513248, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2793,24 +2785,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4888828131106513249, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
-      propertyPath: centiSpeed
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4888828131106513262, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8421730985639272567, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421730985639272567, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4888828131106513251, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d76d6a5e79b6af4db8e5327362add94, type: 3}
 --- !u!1001 &990558235484422920
 PrefabInstance:
