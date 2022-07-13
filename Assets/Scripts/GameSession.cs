@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameSession : MonoBehaviour
 {
-    [SerializeField] int score;
+    int score = 0;
+    [SerializeField] TextMeshProUGUI scoreText;
     void Awake()
     {
         int numGameSessions = FindObjectsOfType<GameSession>().Length;
@@ -20,7 +22,7 @@ public class GameSession : MonoBehaviour
     public void AddToScore(int pointsToAdd)
     {
         score += pointsToAdd;
-        //scoreText.text = score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void ProcessPlayerDeath()

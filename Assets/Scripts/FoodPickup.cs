@@ -9,13 +9,15 @@ public class FoodPickup : MonoBehaviour
     [SerializeField] GameObject prefabFood;
     [SerializeField] GameObject centipedeHead;
     List<Transform> bodySegments;
-    [SerializeField] int pointsPerFood = 10;
+    [SerializeField] int pointsPerFood = 100;
     [SerializeField] Tilemap floorMap;
     AudioPlayer player;
+    GameSession gameSession;
 
     private void Awake()
     {
         player = FindObjectOfType<AudioPlayer>();
+        gameSession = FindObjectOfType<GameSession>();
     }
 
     private void Start()
@@ -29,9 +31,9 @@ public class FoodPickup : MonoBehaviour
         if (collision.tag == "Food")
         {
             GrowCentipede();
-            FindObjectOfType<GameSession>().AddToScore(pointsPerFood);
             Destroy(collision.gameObject);
             player.PlayEatingClip();
+            gameSession.AddToScore(pointsPerFood);
             SpawnFood();
         }
     }
