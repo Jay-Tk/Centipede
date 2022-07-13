@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 91a63d34a9d78b246a918ae1bcd145a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -185,6 +185,5 @@ MonoBehaviour:
   prefabCentipedeBody: {fileID: 7711951967054753335, guid: 84e344e8518ebd3448fc0147e5552bcb, type: 3}
   prefabFood: {fileID: 1982022813344846797, guid: 6ab01b93ea0d85147b2304fcd71e4284, type: 3}
   centipedeHead: {fileID: 4888828129210564177}
-  pointsPerFood: 10
-  bodySpace: 0.75
+  pointsPerFood: 100
   floorMap: {fileID: 0}
