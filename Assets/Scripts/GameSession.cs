@@ -7,7 +7,7 @@ using System;
 
 public class GameSession : MonoBehaviour
 {
-    int score = 0;
+    [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI scoreText;
     void Awake()
     {
@@ -36,7 +36,8 @@ public class GameSession : MonoBehaviour
     public void AddToScore(int pointsToAdd)
     {
         score += pointsToAdd;
-        scoreText.text = "Score: " + score.ToString();
+        Debug.Log(scoreText.text);
+        scoreText.text = "Score: hello" + score.ToString();
     }
 
     public void ProcessPlayerDeath()
