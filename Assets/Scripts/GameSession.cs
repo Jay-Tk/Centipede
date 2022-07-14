@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameSession : MonoBehaviour
 {
@@ -16,6 +17,19 @@ public class GameSession : MonoBehaviour
             Destroy(gameObject);
         } else {
             DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        if(Input.anyKey && SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            SceneManager.LoadScene(1);
         }
     }
 
