@@ -37,7 +37,7 @@ public class GameSession : MonoBehaviour
     {
         score += pointsToAdd;
         Debug.Log(scoreText.text);
-        scoreText.text = "Score: hello" + score.ToString();
+        scoreText.text = "Score: " + score.ToString();
     }
 
     public void ProcessPlayerDeath()
